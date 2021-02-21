@@ -1178,15 +1178,15 @@ public class MyZoooom extends CordovaPlugin implements ZoomSDKAuthenticationList
         try
         {
 
-            Log.v(TAG, "addf................................");
-            Log.d(TAG, "addf................................");
+            Log.v(TAG, "THIS is my  function in zoom sdk ................................");
+            Log.d(TAG, "THIS is my  function in zoom sdk ................................");
 
             callback.success("" + (a+b) );
 
         }catch(Exception ex)
         {
-            Log.v(TAG, "add SOMETHING WRONG................................");
-            Log.d(TAG, "add SOMETHING WRONG................................");
+            Log.v(TAG, "add function in zoom sdk, SOMETHING WRONG................................");
+            Log.d(TAG, "add function in zoom sdk, SOMETHING WRONG................................");
             callback.error("Something went  wrong" + ex);
 
         }
