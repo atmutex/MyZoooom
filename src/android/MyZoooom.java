@@ -165,8 +165,8 @@ public class MyZoooom extends CordovaPlugin implements ZoomSDKAuthenticationList
                 break;
 
             case "add":
-                int p1 = Integer.parseInt(args.getJSONObject(0).getString("param1"));
-                int p2 = Integer.parseInt(args.getJSONObject(0).getString("param2"));
+                int p1 = Integer.parseInt(args.getString(0));
+                int p2 = Integer.parseInt(args.getString(1));
                 this.add(p1, p2, callbackContext);
                 break;
             default:
@@ -1185,7 +1185,10 @@ public class MyZoooom extends CordovaPlugin implements ZoomSDKAuthenticationList
 
         }catch(Exception ex)
         {
+            Log.v(TAG, "add SOMETHING WRONG................................");
+            Log.d(TAG, "add SOMETHING WRONG................................");
             callback.error("Something went  wrong" + ex);
+
         }
     }
 }
