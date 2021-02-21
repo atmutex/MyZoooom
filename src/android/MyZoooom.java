@@ -107,10 +107,12 @@ public class MyZoooom extends CordovaPlugin implements ZoomSDKAuthenticationList
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext)
             throws JSONException {
-        if (DEBUG) {
+        //if (DEBUG) {
             Log.v(TAG, "----- [execute , action =" + action + "]");
+            Log.d(TAG, "----- [execute , action =" + action + "]");
             Log.v(TAG, "----- [execute , args =" + args + "]");
-        }
+            Log.d(TAG, "----- [execute , args =" + args + "]");
+        //}
 
         cordova.setActivityResultCallback(this);
         this.callbackContext = callbackContext;
