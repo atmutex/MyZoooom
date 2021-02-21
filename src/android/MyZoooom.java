@@ -1173,24 +1173,17 @@ public class MyZoooom extends CordovaPlugin implements ZoomSDKAuthenticationList
 
     private void add(int a, int b, CallbackContext callback) 
     {
-        if(args  != null)
+        try
         {
-            try
-            {
 
-                Log.v(TAG, "addf................................");
-			    Log.d(TAG, "addf................................");
+            Log.v(TAG, "addf................................");
+            Log.d(TAG, "addf................................");
 
-                callback.success("" + (a+b) );
+            callback.success("" + (a+b) );
 
-            }catch(Exception ex)
-            {
-                callback.error("Something went  wrong" + ex);
-            }
-        }
-        else
+        }catch(Exception ex)
         {
-            callback.error("Please dont pass  null value");
+            callback.error("Something went  wrong" + ex);
         }
     }
 }
