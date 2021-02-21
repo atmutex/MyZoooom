@@ -72,7 +72,7 @@ import us.zoom.sdk.JoinMeetingParams;
 import us.zoom.sdk.JoinMeetingOptions;
 import us.zoom.sdk.MeetingViewsOptions;
 
-import cordova.plugin.zoom.AuthThread;
+import cordova.plugin.myzoooom.AuthThread;
 
 /**
  * Zoom
