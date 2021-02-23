@@ -85,7 +85,7 @@ import cordova.plugin.myzoooom.AuthThread;
 public class MyZoooom extends CordovaPlugin implements ZoomSDKAuthenticationListener, MeetingServiceListener {
     /* Debug variables */
     private static final String TAG = "<------- ZoomIonicAngularPlugin ---------->";
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG = true;
     public static final Object LOCK = new Object();
 
     private String WEB_DOMAIN = "https://zoom.us";
@@ -107,12 +107,12 @@ public class MyZoooom extends CordovaPlugin implements ZoomSDKAuthenticationList
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext)
             throws JSONException {
-        //if (DEBUG) {
+        if (DEBUG) {
             Log.v(TAG, "----- [execute , action =" + action + "]");
             Log.d(TAG, "----- [execute , action =" + action + "]");
             Log.v(TAG, "----- [execute , args =" + args + "]");
             Log.d(TAG, "----- [execute , args =" + args + "]");
-        //}
+        }
 
         cordova.setActivityResultCallback(this);
         this.callbackContext = callbackContext;
@@ -234,6 +234,7 @@ public class MyZoooom extends CordovaPlugin implements ZoomSDKAuthenticationList
                 }
             }
 
+            Log.v(TAG, "Initialize successfully!");
             callbackContext.success("Initialize successfully!");
         } catch (Exception e) {
             callbackContext.error(e.getMessage());
@@ -760,6 +761,9 @@ public class MyZoooom extends CordovaPlugin implements ZoomSDKAuthenticationList
      * @param callbackContext   cordova callback context
      */
     private void startInstantMeeting(JSONObject option, CallbackContext callbackContext) {
+        if (DEBUG) {
+            Log.v(TAG, "********** Zoom's startInstantMeeting called **********");
+        }
         PluginResult pluginResult = null;
         // Get Zoom SDK instance.
         ZoomSDK zoomSDK = ZoomSDK.getInstance();
@@ -850,14 +854,23 @@ public class MyZoooom extends CordovaPlugin implements ZoomSDKAuthenticationList
                 int response = meetingService.startInstantMeeting(cordova.getActivity().getApplicationContext(), opts);
                 if (DEBUG) {
                     Log.i(TAG, "onClickBtnLoginUserStartInstant, response=" + getMeetingErrorMessage(response));
+                    Log.v(TAG, "onClickBtnLoginUserStartInstant, response=" + getMeetingErrorMessage(response));
                 }
                 PluginResult pluginResult = null;
                 if (response != MeetingError.MEETING_ERROR_SUCCESS) {
                     pluginResult =  new PluginResult(PluginResult.Status.ERROR, getMeetingErrorMessage(response));
+
+                    if (DEBUG) {
+                        Log.v(TAG, "********** Zoom's startInstantMeeting SUCCESS **********");
+                    }
                     pluginResult.setKeepCallback(true);
                     callbackContext.sendPluginResult(pluginResult);
                 } else {
                     pluginResult =  new PluginResult(PluginResult.Status.OK, getMeetingErrorMessage(response));
+
+                    if (DEBUG) {
+                        Log.v(TAG, "********** Zoom's startInstantMeeting FAILURE **********");
+                    }
                     pluginResult.setKeepCallback(true);
                     callbackContext.sendPluginResult(pluginResult);
                 }
